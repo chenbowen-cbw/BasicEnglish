@@ -15,6 +15,23 @@ export const CATEGORY_COLORS = {
   'Qualities (Opposite)': 'bg-purple-100 text-purple-700',
 };
 
+export const CATEGORY_ZH = {
+  'All': '全部',
+  'Operations': '操作词',
+  'Things (General)': '事物（通用）',
+  'Things (Picturable)': '事物（可视）',
+  'Qualities (General)': '性质（通用）',
+  'Qualities (Opposite)': '性质（对立）',
+};
+
+export const CATEGORY_ZH_SHORT = {
+  'Operations': '操作词',
+  'Things (General)': '通用',
+  'Things (Picturable)': '可视',
+  'Qualities (General)': '性质',
+  'Qualities (Opposite)': '对立',
+};
+
 const rawWords = [
   // ── Operations (100) ──────────────────────────────────────────
   { id: 1, word: 'come', zh: '来；到来', category: 'Operations', example: 'Please come here.' },

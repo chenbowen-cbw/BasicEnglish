@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { words, CATEGORIES, CATEGORY_COLORS } from '../data/words';
+import { words, CATEGORIES, CATEGORY_COLORS, CATEGORY_ZH, CATEGORY_ZH_SHORT } from '../data/words';
 
 const ALL = 'All';
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -50,7 +50,7 @@ export default function WordList() {
                 : 'bg-white text-slate-600 border-slate-200 hover:border-sky-400'
             }`}
           >
-            {c === ALL ? '全部' : c}
+            {CATEGORY_ZH[c] ?? c}
             {c !== ALL && (
               <span className="ml-1 opacity-70">
                 ({words.filter(w => w.category === c).length})
@@ -99,7 +99,7 @@ export default function WordList() {
             <div className="font-semibold text-slate-800 text-base">{w.word}</div>
             <div className="text-slate-500 text-sm mt-0.5">{w.zh}</div>
             <span className={`inline-block mt-1.5 px-1.5 py-0.5 rounded text-xs font-medium ${CATEGORY_COLORS[w.category]}`}>
-              {w.category.replace('Things ', '').replace('Qualities ', '')}
+              {CATEGORY_ZH_SHORT[w.category] ?? w.category}
             </span>
             {expanded === w.id && (
               <p className="mt-2 text-xs text-slate-600 border-t border-slate-100 pt-2 italic">

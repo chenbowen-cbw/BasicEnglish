@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { words, CATEGORIES } from '../data/words';
+import { words, CATEGORIES, CATEGORY_ZH } from '../data/words';
 
 const STORAGE_KEY = 'basic-english-progress';
 const STATUS = { NEW: 'new', LEARNING: 'learning', KNOWN: 'known' };
@@ -101,7 +101,7 @@ export default function Learn() {
                 : 'bg-white text-slate-600 border-slate-200 hover:border-sky-400'
             }`}
           >
-            {c === 'All' ? '全部' : c.replace('Things ', 'T/').replace('Qualities ', 'Q/')}
+            {CATEGORY_ZH[c] ?? c}
           </button>
         ))}
       </div>
