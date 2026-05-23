@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import { words, CATEGORIES } from '../data/words';
 
 const STORAGE_KEY = 'basic-english-progress';
@@ -16,27 +16,32 @@ function saveProgress(p) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
 }
 
+function makeDeck(cat, prog) {
+  const pool = cat === 'All' ? words : words.filter(w => w.category === cat);
+  const notKnown = pool.filter(w => prog[w.id] !== STATUS.KNOWN);
+  return [...notKnown].sort(() => Math.random() - 0.5);
+}
+
 export default function Learn() {
+  const [progress, setProgress] = useState(loadProgress);
   const [categoryFilter, setCategoryFilter] = useState('All');
-  const [deck, setDeck] = useState([]);
+  const [deck, setDeck] = useState(() => makeDeck('All', progress));
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
-  const [progress, setProgress] = useState(loadProgress);
-  const [finished, setFinished] = useState(false);
+  const [finished, setFinished] = useState(() => deck.length === 0);
 
-  const buildDeck = useCallback((cat, prog) => {
-    const pool = cat === 'All' ? words : words.filter(w => w.category === cat);
-    const notKnown = pool.filter(w => prog[w.id] !== STATUS.KNOWN);
-    const shuffled = [...notKnown].sort(() => Math.random() - 0.5);
-    setDeck(shuffled);
+  function rebuild(cat, prog) {
+    const d = makeDeck(cat, prog);
+    setDeck(d);
     setIndex(0);
     setFlipped(false);
-    setFinished(shuffled.length === 0);
-  }, []);
+    setFinished(d.length === 0);
+  }
 
-  useEffect(() => {
-    buildDeck(categoryFilter, progress);
-  }, [categoryFilter]);
+  function selectCategory(c) {
+    setCategoryFilter(c);
+    rebuild(c, progress);
+  }
 
   const current = deck[index];
 
@@ -61,7 +66,7 @@ export default function Learn() {
     const cleared = {};
     saveProgress(cleared);
     setProgress(cleared);
-    buildDeck(categoryFilter, cleared);
+    rebuild(categoryFilter, cleared);
   }
 
   const categories = ['All', ...Object.values(CATEGORIES)];
@@ -89,7 +94,7 @@ export default function Learn() {
         {categories.map(c => (
           <button
             key={c}
-            onClick={() => setCategoryFilter(c)}
+            onClick={() => selectCategory(c)}
             className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
               categoryFilter === c
                 ? 'bg-sky-500 text-white border-sky-500'
@@ -111,7 +116,7 @@ export default function Learn() {
             共掌握 {known} / {words.length} 个词汇
           </p>
           <button
-            onClick={() => buildDeck(categoryFilter, progress)}
+            onClick={() => rebuild(categoryFilter, progress)}
             className="bg-sky-500 text-white px-6 py-2.5 rounded-xl font-medium hover:bg-sky-600 transition-colors mr-3"
           >
             再练一次

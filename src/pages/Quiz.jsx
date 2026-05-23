@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { words } from '../data/words';
 
 const QUIZ_SIZE = 20;
@@ -24,7 +24,6 @@ export default function Quiz() {
   const [done, setDone] = useState(false);
 
   const q = questions[index];
-  const isCorrect = selected !== null && selected === q?.correct.id;
 
   function choose(optId) {
     if (selected !== null) return;

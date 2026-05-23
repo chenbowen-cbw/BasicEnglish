@@ -8,7 +8,7 @@ const LEVEL_COLOR = {
   advanced: 'bg-red-100 text-red-700',
 };
 
-function Tooltip({ word, onClose }) {
+function Tooltip({ word }) {
   const info = getWordByText(word);
   if (!info) return null;
   return (

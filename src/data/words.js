@@ -15,7 +15,7 @@ export const CATEGORY_COLORS = {
   'Qualities (Opposite)': 'bg-purple-100 text-purple-700',
 };
 
-export const words = [
+const rawWords = [
   // ── Operations (100) ──────────────────────────────────────────
   { id: 1, word: 'come', zh: '来；到来', category: 'Operations', example: 'Please come here.' },
   { id: 2, word: 'get', zh: '得到；变得', category: 'Operations', example: 'I will get a book.' },
@@ -714,7 +714,7 @@ export const words = [
   { id: 699, word: 'safe', zh: '安全的', category: 'Qualities (General)', example: 'A safe place.' },
   { id: 700, word: 'simple', zh: '简单的；朴素', category: 'Qualities (General)', example: 'A simple answer.' },
 
-  // ── Qualities – Opposite (50 pairs → 100 words) ───────────────
+  // ── Qualities – Opposite (50) ─────────────────────────────────
   { id: 701, word: 'awake', zh: '醒着的', category: 'Qualities (Opposite)', example: 'I am awake.' },
   { id: 702, word: 'asleep', zh: '睡着的', category: 'Qualities (Opposite)', example: 'The baby is asleep.' },
   { id: 703, word: 'bad', zh: '坏的；差的', category: 'Qualities (Opposite)', example: 'A bad day.' },
@@ -731,44 +731,49 @@ export const words = [
   { id: 714, word: 'dry', zh: '干的；干燥', category: 'Qualities (Opposite)', example: 'Dry land.' },
   { id: 715, word: 'false', zh: '错误的；假的', category: 'Qualities (Opposite)', example: 'A false answer.' },
   { id: 716, word: 'first', zh: '第一的；首先', category: 'Qualities (Opposite)', example: 'The first day.' },
-  { id: 717, word: 'forward', zh: '向前的', category: 'Qualities (Opposite)', example: 'A forward step.' },
-  { id: 718, word: 'back', zh: '向后的；背面', category: 'Qualities (Opposite)', example: 'A step back.' },
-  { id: 719, word: 'future', zh: '未来的', category: 'Qualities (Opposite)', example: 'Future plans.' },
-  { id: 720, word: 'help', zh: '帮助', category: 'Qualities (Opposite)', example: 'Give help.' },
-  { id: 721, word: 'ill', zh: '生病的；有害', category: 'Qualities (Opposite)', example: 'She is ill.' },
-  { id: 722, word: 'well', zh: '健康的；好', category: 'Qualities (Opposite)', example: 'I am well.' },
-  { id: 723, word: 'male', zh: '男性的', category: 'Qualities (Opposite)', example: 'A male animal.' },
-  { id: 724, word: 'female', zh: '女性的', category: 'Qualities (Opposite)', example: 'A female bird.' },
-  { id: 725, word: 'new', zh: '新的；新鲜', category: 'Qualities (Opposite)', example: 'A new day.' },
-  { id: 726, word: 'old', zh: '旧的；年老', category: 'Qualities (Opposite)', example: 'An old tree.' },
-  { id: 727, word: 'open', zh: '打开的', category: 'Qualities (Opposite)', example: 'An open window.' },
-  { id: 728, word: 'shut', zh: '关闭的', category: 'Qualities (Opposite)', example: 'Keep it shut.' },
-  { id: 729, word: 'short', zh: '短的；矮的', category: 'Qualities (Opposite)', example: 'A short road.' },
-  { id: 730, word: 'thin', zh: '薄的；细的', category: 'Qualities (Opposite)', example: 'Thin paper.' },
-  { id: 731, word: 'small', zh: '小的；少量', category: 'Qualities (Opposite)', example: 'A small house.' },
-  { id: 732, word: 'slow', zh: '慢的；迟缓', category: 'Qualities (Opposite)', example: 'A slow walk.' },
-  { id: 733, word: 'loose', zh: '松的；宽松', category: 'Qualities (Opposite)', example: 'A loose knot.' },
-  { id: 734, word: 'mixed', zh: '混杂的', category: 'Qualities (Opposite)', example: 'Mixed colors.' },
-  { id: 735, word: 'complex', zh: '复杂的', category: 'Qualities (Opposite)', example: 'Complex ideas.' },
-  { id: 736, word: 'fertile', zh: '多产的', category: 'Qualities (Opposite)', example: 'Fertile soil.' },
-  { id: 737, word: 'sterile', zh: '贫瘠的；无菌', category: 'Qualities (Opposite)', example: 'Sterile land.' },
-  { id: 738, word: 'hollow', zh: '空心的', category: 'Qualities (Opposite)', example: 'A hollow box.' },
-  { id: 739, word: 'solid', zh: '固体的；坚实', category: 'Qualities (Opposite)', example: 'Solid rock.' },
-  { id: 740, word: 'liquid', zh: '液态的', category: 'Qualities (Opposite)', example: 'Liquid water.' },
-  { id: 741, word: 'rough', zh: '粗糙的；粗野', category: 'Qualities (Opposite)', example: 'Rough surface.' },
-  { id: 742, word: 'near', zh: '近的', category: 'Qualities (Opposite)', example: 'Near the house.' },
-  { id: 743, word: 'far', zh: '远的', category: 'Qualities (Opposite)', example: 'Far away.' },
-  { id: 744, word: 'wide', zh: '宽阔的', category: 'Qualities (Opposite)', example: 'A wide river.' },
-  { id: 745, word: 'narrow', zh: '狭窄的', category: 'Qualities (Opposite)', example: 'A narrow path.' },
-  { id: 746, word: 'heavy', zh: '重的；沉重', category: 'Qualities (Opposite)', example: 'A heavy stone.' },
-  { id: 747, word: 'light', zh: '轻的；浅色', category: 'Qualities (Opposite)', example: 'A light bag.' },
-  { id: 748, word: 'loud', zh: '响亮的', category: 'Qualities (Opposite)', example: 'A loud noise.' },
-  { id: 749, word: 'soft', zh: '轻柔的；低沉', category: 'Qualities (Opposite)', example: 'A soft voice.' },
-  { id: 750, word: 'mixed', zh: '综合的', category: 'Qualities (Opposite)', example: 'Mixed results.' },
+  { id: 717, word: 'ill', zh: '生病的；有害', category: 'Qualities (Opposite)', example: 'She is ill.' },
+  { id: 718, word: 'male', zh: '男性的', category: 'Qualities (Opposite)', example: 'A male animal.' },
+  { id: 719, word: 'female', zh: '女性的', category: 'Qualities (Opposite)', example: 'A female bird.' },
+  { id: 720, word: 'new', zh: '新的；新鲜', category: 'Qualities (Opposite)', example: 'A new day.' },
+  { id: 721, word: 'old', zh: '旧的；年老', category: 'Qualities (Opposite)', example: 'An old tree.' },
+  { id: 722, word: 'shut', zh: '关闭的', category: 'Qualities (Opposite)', example: 'Keep it shut.' },
+  { id: 723, word: 'short', zh: '短的；矮的', category: 'Qualities (Opposite)', example: 'A short road.' },
+  { id: 724, word: 'thin', zh: '薄的；细的', category: 'Qualities (Opposite)', example: 'Thin paper.' },
+  { id: 725, word: 'small', zh: '小的；少量', category: 'Qualities (Opposite)', example: 'A small house.' },
+  { id: 726, word: 'slow', zh: '慢的；迟缓', category: 'Qualities (Opposite)', example: 'A slow walk.' },
+  { id: 727, word: 'loose', zh: '松的；宽松', category: 'Qualities (Opposite)', example: 'A loose knot.' },
+  { id: 728, word: 'sterile', zh: '贫瘠的；无菌', category: 'Qualities (Opposite)', example: 'Sterile land.' },
+  { id: 729, word: 'solid', zh: '固体的；坚实', category: 'Qualities (Opposite)', example: 'Solid rock.' },
+  { id: 730, word: 'rough', zh: '粗糙的；粗野', category: 'Qualities (Opposite)', example: 'A rough surface.' },
+  { id: 731, word: 'heavy', zh: '重的；沉重', category: 'Qualities (Opposite)', example: 'A heavy stone.' },
+  { id: 732, word: 'loud', zh: '响亮的', category: 'Qualities (Opposite)', example: 'A loud noise.' },
+  { id: 733, word: 'bent', zh: '弯曲的', category: 'Qualities (Opposite)', example: 'A bent nail.' },
+  { id: 734, word: 'complete', zh: '完整的；完成', category: 'Qualities (Opposite)', example: 'A complete list.' },
+  { id: 735, word: 'cruel', zh: '残忍的', category: 'Qualities (Opposite)', example: 'A cruel act.' },
+  { id: 736, word: 'dear', zh: '昂贵的；亲爱的', category: 'Qualities (Opposite)', example: 'A dear friend.' },
+  { id: 737, word: 'delicate', zh: '精致的；脆弱的', category: 'Qualities (Opposite)', example: 'A delicate flower.' },
+  { id: 738, word: 'feeble', zh: '虚弱的', category: 'Qualities (Opposite)', example: 'A feeble voice.' },
+  { id: 739, word: 'foolish', zh: '愚蠢的', category: 'Qualities (Opposite)', example: 'A foolish idea.' },
+  { id: 740, word: 'married', zh: '已婚的', category: 'Qualities (Opposite)', example: 'A married woman.' },
+  { id: 741, word: 'opposite', zh: '相反的；对面的', category: 'Qualities (Opposite)', example: 'The opposite side.' },
+  { id: 742, word: 'sad', zh: '悲伤的', category: 'Qualities (Opposite)', example: 'A sad story.' },
+  { id: 743, word: 'strange', zh: '奇怪的；陌生的', category: 'Qualities (Opposite)', example: 'A strange noise.' },
+  { id: 744, word: 'wrong', zh: '错误的；不对的', category: 'Qualities (Opposite)', example: 'A wrong answer.' },
+  { id: 745, word: 'shallow', zh: '浅的；肤浅的', category: 'Qualities (Opposite)', example: 'Shallow water.' },
+  { id: 746, word: 'weak', zh: '虚弱的；薄弱的', category: 'Qualities (Opposite)', example: 'A weak arm.' },
+  { id: 747, word: 'empty', zh: '空的', category: 'Qualities (Opposite)', example: 'An empty box.' },
+  { id: 748, word: 'ugly', zh: '丑陋的', category: 'Qualities (Opposite)', example: 'An ugly mark.' },
+  { id: 749, word: 'cheap', zh: '便宜的', category: 'Qualities (Opposite)', example: 'A cheap cloth.' },
+  { id: 750, word: 'calm', zh: '平静的；冷静的', category: 'Qualities (Opposite)', example: 'A calm sea.' },
 ];
 
-export const wordSet = new Set(words.map(w => w.word.toLowerCase()));
+// Keep each word once (first occurrence) so flashcards and quizzes never repeat.
+export const words = rawWords.filter(
+  (w, i, arr) => arr.findIndex(x => x.word.toLowerCase() === w.word.toLowerCase()) === i
+);
+
+const wordMap = new Map(words.map(w => [w.word.toLowerCase(), w]));
 
 export function getWordByText(text) {
-  return words.find(w => w.word.toLowerCase() === text.toLowerCase());
+  return wordMap.get(text.toLowerCase());
 }

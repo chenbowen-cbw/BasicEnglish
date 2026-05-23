@@ -1,18 +1,13 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { words } from '../data/words';
-
-const stats = [
-  { label: 'Operations', count: words.filter(w => w.category === 'Operations').length, color: 'bg-blue-50 text-blue-600 border-blue-200' },
-  { label: 'Things', count: words.filter(w => w.category.startsWith('Things')).length, color: 'bg-green-50 text-green-600 border-green-200' },
-  { label: 'Qualities', count: words.filter(w => w.category.startsWith('Qualities')).length, color: 'bg-orange-50 text-orange-600 border-orange-200' },
-];
 
 const modules = [
   {
     to: '/words',
     icon: '📚',
     title: '词汇表',
-    desc: '浏览全部 850 个 Basic English 核心词汇，按分类检索，实时搜索',
+    desc: '浏览全部 Basic English 核心词汇，按分类检索，实时搜索',
     color: 'bg-sky-500',
   },
   {
@@ -39,6 +34,12 @@ const modules = [
 ];
 
 export default function Home() {
+  const stats = useMemo(() => [
+    { label: 'Operations', count: words.filter(w => w.category === 'Operations').length, color: 'bg-blue-50 text-blue-600 border-blue-200' },
+    { label: 'Things', count: words.filter(w => w.category.startsWith('Things')).length, color: 'bg-green-50 text-green-600 border-green-200' },
+    { label: 'Qualities', count: words.filter(w => w.category.startsWith('Qualities')).length, color: 'bg-orange-50 text-orange-600 border-orange-200' },
+  ], []);
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
       {/* Hero */}
@@ -47,7 +48,7 @@ export default function Home() {
           Basic English 850
         </h1>
         <p className="text-slate-500 text-lg max-w-2xl mx-auto">
-          基于 C.K. Ogden 创立的 Basic English 体系，用 850 个核心词汇开启英语学习之旅
+          基于 C.K. Ogden 创立的 Basic English 体系，用最核心的词汇开启英语学习之旅
         </p>
         <div className="flex justify-center gap-4 mt-6 flex-wrap">
           {stats.map(s => (
