@@ -151,6 +151,7 @@ export default function Learn() {
               <div className="card-back bg-sky-500 text-white shadow-md">
                 <div className="text-3xl font-bold mb-2">{current.zh}</div>
                 <div className="text-sky-100 text-sm italic text-center px-4">"{current.example}"</div>
+                <div className="text-sky-200 text-xs text-center px-4 mt-1">{current.exampleZh}</div>
               </div>
             </div>
           </div>

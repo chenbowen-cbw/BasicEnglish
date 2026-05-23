@@ -102,9 +102,10 @@ export default function WordList() {
               {CATEGORY_ZH_SHORT[w.category] ?? w.category}
             </span>
             {expanded === w.id && (
-              <p className="mt-2 text-xs text-slate-600 border-t border-slate-100 pt-2 italic">
-                "{w.example}"
-              </p>
+              <div className="mt-2 border-t border-slate-100 pt-2">
+                <p className="text-xs text-slate-600 italic">"{w.example}"</p>
+                <p className="text-xs text-slate-400 mt-1">{w.exampleZh}</p>
+              </div>
             )}
           </div>
         ))}
